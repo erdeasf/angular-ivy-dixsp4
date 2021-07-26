@@ -1,0 +1,43 @@
+<div>
+  <h1>Candidates</h1>
+  <mat-checkbox>Male</mat-checkbox>
+  <mat-checkbox>Female</mat-checkbox>
+  <div>
+    <input type="email" class="form-control" id="search-text" [(ngModel)]="searchText"
+  placeholder="Whom are you looking for?" autofocus>
+  </div>
+  <table>
+    <tr>
+      <th>#</th>
+      <th>FirstName</th>
+      <th>LastName</th>
+      <th>Email</th>
+      <th>Gender</th>
+    </tr>
+    <tr *ngFor="let person of listCandidate | appFilter: searchText">
+      <td>{{person.id}}</td>
+      <td>{{person.first_name}}</td>
+      <td>{{person.last_name}}</td>
+      <td>{{person.email}}</td>
+      <td>{{person.gender}}</td>
+    <tr>
+  </table>
+</div>
+
+<div>
+  Add New Candidate
+
+  <form [formGroup]="loginForm" (ngSubmit)="addUser()">
+    <input type="text" formControlName="first_name" class="form-control" placeholder="FirstName">
+    <input type="text" formControlName="last_name" class="form-control" placeholder="LastName">
+    <br/>
+    <input type="email" name="email" placeholder="Email">
+    <br/>
+    <input type="radio" id="male" name="gender" value="male">
+    <label for="male">Male</label>
+    <input type="radio" id="Female" name="gender" value="Female">
+    <label for="male">Female</label>
+    <br/>
+    <input type="submit" value="Add">
+  </form>
+</div>
